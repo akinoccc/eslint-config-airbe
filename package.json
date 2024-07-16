@@ -2,14 +2,6 @@
   "name": "eslint-config-airbe",
   "version": "1.0.0",
   "description": "A shared eslint config to apply eslint fastly",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsup --format esm,cjs --clean --dts",
-    "watch": "tsup --format esm,cjs --watch",
-    "lint": "eslint . --ext .ts,.vue,.tsx,.d.ts",
-    "lint:fix": "eslint . --fix --ext .ts,.vue,.tsx,.d.ts",
-    "typecheck": "tsc --noEmit"
-  },
   "keywords": [
     "eslint",
     "eslint-config",
@@ -20,6 +12,34 @@
   ],
   "author": "Akino",
   "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup --format esm,cjs --clean --dts",
+    "watch": "tsup --format esm,cjs --watch",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "cz": "cz",
+    "prepare": "husky",
+    "release": "semantic-release"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue,cjs,mjs}": [
+      "npm run lint:fix",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "peerDependencies": {
     "@eslint/js": "^9.6.0",
     "eslint": "^9.0.0",
