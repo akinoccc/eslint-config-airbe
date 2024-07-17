@@ -51,9 +51,6 @@ importers:
       cz-conventional-changelog:
         specifier: ^3.3.0
         version: 3.3.0(@types/node@20.14.10)(typescript@5.5.3)
-      eslint-config-airbe:
-        specifier: ^1.0.0
-        version: 1.0.0(@eslint/js@9.6.0)(eslint-plugin-vue@9.27.0(eslint@9.6.0))(eslint@9.6.0)(typescript-eslint@8.0.0-alpha.41(eslint@9.6.0)(typescript@5.5.3))(typescript@5.5.3)(vue-eslint-parser@9.4.3(eslint@9.6.0))
       husky:
         specifier: ^9.0.11
         version: 9.0.11
@@ -1199,16 +1196,6 @@ packages:
   escape-string-regexp@5.0.0:
     resolution: {integrity: sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==}
     engines: {node: '>=12'}
-
-  eslint-config-airbe@1.0.0:
-    resolution: {integrity: sha512-mKst7emy8EQzgqP9ehY0zCevAK4nyU1GED86F81gMWGo2Kd7XD6ZIhJB9rCIkWfeJ5kXHM5RiDZn6TwX3QGG8g==}
-    peerDependencies:
-      '@eslint/js': ^9.6.0
-      eslint: ^9.0.0
-      eslint-plugin-vue: ^9.27.0
-      typescript: '*'
-      typescript-eslint: 8.0.0-alpha.41
-      vue-eslint-parser: ^9.4.3
 
   eslint-plugin-vue@9.27.0:
     resolution: {integrity: sha512-5Dw3yxEyuBSXTzT5/Ge1X5kIkRTQ3nvBn/VwPwInNiZBSJOO/timWMUaflONnFBzU6NhB68lxnCda7ULV5N7LA==}
@@ -4006,16 +3993,6 @@ snapshots:
   escape-string-regexp@4.0.0: {}
 
   escape-string-regexp@5.0.0: {}
-
-  eslint-config-airbe@1.0.0(@eslint/js@9.6.0)(eslint-plugin-vue@9.27.0(eslint@9.6.0))(eslint@9.6.0)(typescript-eslint@8.0.0-alpha.41(eslint@9.6.0)(typescript@5.5.3))(typescript@5.5.3)(vue-eslint-parser@9.4.3(eslint@9.6.0)):
-    dependencies:
-      '@eslint/js': 9.6.0
-      deepmerge: 4.3.1
-      eslint: 9.6.0
-      eslint-plugin-vue: 9.27.0(eslint@9.6.0)
-      typescript: 5.5.3
-      typescript-eslint: 8.0.0-alpha.41(eslint@9.6.0)(typescript@5.5.3)
-      vue-eslint-parser: 9.4.3(eslint@9.6.0)
 
   eslint-plugin-vue@9.27.0(eslint@9.6.0):
     dependencies:
