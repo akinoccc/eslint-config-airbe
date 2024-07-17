@@ -31,6 +31,7 @@
     "build:inspector": "pnpm build && npx @eslint/config-inspector build",
     "build": "tsup --format esm,cjs --clean --dts",
     "watch": "tsup --format esm,cjs --watch",
+    "dev": "npx @eslint/config-inspector --config eslint.config.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit",
