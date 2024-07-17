@@ -18,13 +18,14 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "scripts": {
+    "build:inspector": "pnpm build && npx @eslint/config-inspector build",
     "build": "tsup --format esm,cjs --clean --dts",
     "watch": "tsup --format esm,cjs --watch",
     "lint": "eslint .",
@@ -55,11 +56,13 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/config-inspector": "^0.5.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@types/eslint": "^8.56.10",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "eslint-config-airbe": "^1.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.7",
     "semantic-release": "^24.0.0",
