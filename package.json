@@ -42,7 +42,7 @@
   "lint-staged": {
     "*.{js,jsx,vue,cjs,mjs}": [
       "npm run lint:fix",
-      "git add"
+      "git add ."
     ]
   },
   "publishConfig": {

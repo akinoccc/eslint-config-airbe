@@ -2,8 +2,8 @@ declare module '@eslint/js' {
   import type { Linter } from 'eslint'
 
   const configs : {
-    all: Linter.FlatConfig[]
-    recommended: Linter.FlatConfig[]
+    all: Linter.FlatConfig
+    recommended: Linter.FlatConfig
   }
 }
 
