@@ -1,4 +1,4 @@
-import defineConfig from './dist/index.mjs'
+import defineConfig from 'eslint-config-airbe'
 
 export default defineConfig({
   js: true,
