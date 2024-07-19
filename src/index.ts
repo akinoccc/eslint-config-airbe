@@ -10,15 +10,17 @@ import { isPlainObject } from './utils'
 type EslintFlagConfig = (Linter.FlatConfig | TSESLint.FlatConfig.Config)
 type CustomConfigItem = Linter.RulesRecord | boolean
 
-const defineConfig = (customConfig: {
+interface AirBeConfig {
   js?: CustomConfigItem,
   ts?: CustomConfigItem,
   vue?: CustomConfigItem,
   ignores?: string[],
   globals?: ESLint.Globals,
-}): EslintFlagConfig[] => {
+}
+
+const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfig[]): EslintFlagConfig[] => {
   const eslintConfig: EslintFlagConfig[] = [],
-    { js, ts, vue, ignores, globals } = customConfig
+    { js, ts, vue, ignores, globals } = config
 
   if (js) {
     const jsRules: Linter.RulesRecord = {
@@ -141,6 +143,9 @@ const defineConfig = (customConfig: {
       '@typescript-eslint/no-unused-expressions': 'off'
     }
   })
+
+  if (Array.isArray(customFlatConfigs))
+    eslintConfig.push(...customFlatConfigs)
 
   return eslintConfig
 }
