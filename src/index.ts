@@ -4,8 +4,9 @@ import tseslint from 'typescript-eslint'
 import vueParser from 'vue-eslint-parser'
 
 import type { TSESLint } from '@typescript-eslint/utils'
-import type { Linter } from 'eslint'
+import {ESLint, Linter} from 'eslint'
 import { isPlainObject } from './utils'
+import Globals = ESLint.Globals;
 
 type EslintFlagConfig = (Linter.FlatConfig | TSESLint.FlatConfig.Config)
 type CustomConfigItem = Linter.RulesRecord | boolean
@@ -15,6 +16,7 @@ const defineConfig = (customConfig: {
   ts?: CustomConfigItem,
   vue?: CustomConfigItem,
   ignores?: string[],
+  globals?: Globals,
 }): EslintFlagConfig[] => {
   const eslintConfig: EslintFlagConfig[] = [],
     { js, ts, vue, ignores } = customConfig
@@ -34,7 +36,6 @@ const defineConfig = (customConfig: {
 
       'no-use-before-define': 'error',
       'no-eval': 'error',
-      'sort-imports': 'warn',
     }
     if (isPlainObject(js))
       Object.assign(jsRules, js)
@@ -46,6 +47,8 @@ const defineConfig = (customConfig: {
   if (ts) {
     const tsRules: Linter.RulesRecord = {
       '@typescript-eslint/prefer-nullish-coalescing': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn'],
       '@typescript-eslint/no-explicit-any': 'warn',
     }
@@ -122,7 +125,6 @@ const defineConfig = (customConfig: {
     eslintConfig.push({
       ignores,
     })
-
 
   eslintConfig.push({
     files: ['*.json'],
