@@ -25,11 +25,14 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
   if (js) {
     const jsRules: Linter.RulesRecord = {
       ...eslint.configs.recommended.rules,
+      'no-def': 'off',
+
       'quotes': ['error', 'single'],
       'semi': ['error', 'never'],
       'indent': ['error', 2],
       'eqeqeq': ['error', 'always'],
       'curly': ['error', 'multi', 'consistent'],
+
       'default-case': 'warn',
       'default-case-last': 'warn',
       'no-await-in-loop': 'warn',
