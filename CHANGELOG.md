@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-07-19)
+
+
+### Performance Improvements
+
+* **rules:** turn some rules off and to warn ([36d3a10](https://github.com/akinoccc/eslint-config-airbe/commit/36d3a10e223e369397ae5f99346825bda3578eec))
+
 # [1.0.0-beta.2](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-07-19)
 
 
