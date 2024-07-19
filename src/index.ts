@@ -6,7 +6,6 @@ import vueParser from 'vue-eslint-parser'
 import type { TSESLint } from '@typescript-eslint/utils'
 import {ESLint, Linter} from 'eslint'
 import { isPlainObject } from './utils'
-import Globals = ESLint.Globals;
 
 type EslintFlagConfig = (Linter.FlatConfig | TSESLint.FlatConfig.Config)
 type CustomConfigItem = Linter.RulesRecord | boolean
@@ -16,10 +15,10 @@ const defineConfig = (customConfig: {
   ts?: CustomConfigItem,
   vue?: CustomConfigItem,
   ignores?: string[],
-  globals?: Globals,
+  globals?: ESLint.Globals,
 }): EslintFlagConfig[] => {
   const eslintConfig: EslintFlagConfig[] = [],
-    { js, ts, vue, ignores } = customConfig
+    { js, ts, vue, ignores, globals } = customConfig
 
   if (js) {
     const jsRules: Linter.RulesRecord = {
@@ -125,6 +124,14 @@ const defineConfig = (customConfig: {
     eslintConfig.push({
       ignores,
     })
+
+  if(isPlainObject(globals))
+    eslintConfig.push({
+      languageOptions: {
+        globals
+      }
+    })
+
 
   eslintConfig.push({
     files: ['*.json'],
