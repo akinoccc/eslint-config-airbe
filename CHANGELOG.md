@@ -1,3 +1,11 @@
+# [1.0.0-beta.4](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-07-19)
+
+
+### Performance Improvements
+
+* **rules:** turn off `@typescript-eslint/no-unsafe-argument` ([5a2a2cf](https://github.com/akinoccc/eslint-config-airbe/commit/5a2a2cfc4260178d2d510f94b8dcba9980941e93))
+* **rules:** turn off `no-def` ([a2ae19b](https://github.com/akinoccc/eslint-config-airbe/commit/a2ae19b2187b5c5a6d8bb6621f716722228e0598))
+
 # [1.0.0-beta.3](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-07-19)
 
 
