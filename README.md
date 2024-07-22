@@ -23,11 +23,11 @@ export default defineConfig({
   },
   ts: true,
   vue: true,
-  ignores: ["node_modules"]
+  ignores: ["node_modules"],
   globals: {
-    bar: true
-    foo: "readonly"
-    baz: "writable"
+    bar: true,
+    foo: "readonly",
+    baz: "writable",
   }
 })
 ```
