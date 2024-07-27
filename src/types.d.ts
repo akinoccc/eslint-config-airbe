@@ -1,7 +1,7 @@
 declare module '@eslint/js' {
   import type { Linter } from 'eslint'
 
-  const configs : {
+  const configs: {
     all: Linter.FlatConfig
     recommended: Linter.FlatConfig
   }

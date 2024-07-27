@@ -1,37 +1,35 @@
 import eslint from '@eslint/js'
+import stylisticEslint, { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
 import pluginVue from 'eslint-plugin-vue'
 import tseslint from 'typescript-eslint'
 import vueParser from 'vue-eslint-parser'
 
 import type { TSESLint } from '@typescript-eslint/utils'
-import {ESLint, Linter} from 'eslint'
+import { ESLint, Linter } from 'eslint'
 import { isPlainObject } from './utils'
 
-type EslintFlagConfig = (Linter.FlatConfig | TSESLint.FlatConfig.Config)
+type EslintFlagConfig = (Linter.FlatConfig | TSESLint.FlatConfig.Config | Linter.BaseConfig)
 type CustomConfigItem = Linter.RulesRecord | boolean
 
 interface AirBeConfig {
-  js?: CustomConfigItem,
-  ts?: CustomConfigItem,
-  vue?: CustomConfigItem,
-  ignores?: string[],
-  globals?: ESLint.Globals,
+  js?: CustomConfigItem
+  ts?: CustomConfigItem
+  vue?: CustomConfigItem
+  stylistic?: StylisticCustomizeOptions
+  ignores?: string[]
+  globals?: ESLint.Globals
 }
 
 const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfig[]): EslintFlagConfig[] => {
   const eslintConfig: EslintFlagConfig[] = [],
-    { js, ts, vue, ignores, globals } = config
+    { js, ts, vue, stylistic, ignores, globals } = config
 
   if (js) {
     const jsRules: Linter.RulesRecord = {
-      ...eslint.configs.recommended.rules,
       'no-def': 'off',
 
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'never'],
-      'indent': ['error', 2],
-      'eqeqeq': ['error', 'always'],
-      'curly': ['error', 'multi', 'consistent'],
+      eqeqeq: ['error', 'always'],
+      curly: ['error', 'multi', 'consistent'],
 
       'default-case': 'warn',
       'default-case-last': 'warn',
@@ -44,8 +42,7 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
     if (isPlainObject(js))
       Object.assign(jsRules, js)
 
-
-    eslintConfig.push({ rules: jsRules })
+    eslintConfig.push(eslint.configs.recommended, { rules: jsRules })
   }
 
   if (ts) {
@@ -66,7 +63,6 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
     if (isPlainObject(ts))
       Object.assign(tsRules, ts)
 
-
     eslintConfig.push(...tseslint.configs.recommendedTypeChecked, ...tseslint.configs.stylisticTypeChecked, { rules: tsRules })
   }
 
@@ -74,11 +70,11 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
     const vueRules: Linter.RulesRecord = {
       'vue/multi-word-component-names': 'off',
       'vue/no-duplicate-attributes': ['warn', {
-        'allowCoexistClass': true,
-        'allowCoexistStyle': true
+        allowCoexistClass: true,
+        allowCoexistStyle: true,
       }],
       'vue/no-parsing-error': ['error', {
-        'duplicate-attribute': false
+        'duplicate-attribute': false,
       }],
       'vue/html-indent': ['error', 2],
       'vue/max-attributes-per-line': ['error', {
@@ -109,7 +105,6 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
     if (isPlainObject(vue))
       Object.assign(vueRules, vue)
 
-
     eslintConfig.push(
       ...pluginVue.configs['flat/recommended'],
       {
@@ -120,15 +115,26 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
             projectService: true,
             EXPERIMENTAL_useProjectService: true,
             ecmaFeatures: {
-              jsx: true
+              jsx: true,
             },
           },
         },
       },
       {
         rules: vueRules,
-      }
+      },
     )
+  }
+
+  if (stylistic) {
+    const stylisticRules: StylisticCustomizeOptions = {
+      quoteProps: 'as-needed',
+    }
+
+    if (isPlainObject(stylistic))
+      Object.assign(stylisticRules, stylistic)
+
+    eslintConfig.push(stylisticEslint.configs.customize(stylisticRules))
   }
 
   if (Array.isArray(ignores))
@@ -136,21 +142,22 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
       ignores,
     })
 
-  if(isPlainObject(globals))
+  if (isPlainObject(globals))
     eslintConfig.push({
       languageOptions: {
-        globals
-      }
+        globals,
+      },
     })
-
 
   eslintConfig.push({
     files: ['*.json'],
     rules: {
       'no-invalid-meta': 'off',
-      'quotes': ['error', 'double'],
-      '@typescript-eslint/no-unused-expressions': 'off'
-    }
+      '@stylistic/quotes': ['error', 'double'],
+      '@stylistic/quote-props': ['error', 'always'],
+      '@stylistic/comma-dangle': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
   })
 
   if (Array.isArray(customFlatConfigs))
