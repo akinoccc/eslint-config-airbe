@@ -23,6 +23,7 @@ export default defineConfig({
   },
   ts: true,
   vue: true,
+  stylistic: true,
   ignores: ["node_modules"],
   globals: {
     bar: true,
