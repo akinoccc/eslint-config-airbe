@@ -1,3 +1,10 @@
+# [1.0.0-beta.5](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-07-27)
+
+
+### Features
+
+* **rules:** support `stylistic` config ([b2da72f](https://github.com/akinoccc/eslint-config-airbe/commit/b2da72fa67efc4dc7fdd4aa291d37c01f16000d5))
+
 # [1.0.0-beta.4](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-07-19)
 
 
