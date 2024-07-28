@@ -127,14 +127,21 @@ const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfi
   }
 
   if (stylistic) {
-    const stylisticRules: StylisticCustomizeOptions = {
-      quoteProps: 'as-needed',
+    const stylisticRules: Linter.RulesRecord = {
+      '@stylistic/no-trailing-spaces': ['error', { skipBlankLines: true }],
     }
 
     if (isPlainObject(stylistic))
       Object.assign(stylisticRules, stylistic)
 
-    eslintConfig.push(stylisticEslint.configs.customize(stylisticRules))
+    eslintConfig.push(
+      stylisticEslint.configs.customize({
+        quoteProps: 'as-needed',
+      }),
+      {
+        rules: stylisticRules,
+      },
+    )
   }
 
   if (Array.isArray(ignores))
