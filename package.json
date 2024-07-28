@@ -51,11 +51,12 @@
   },
   "peerDependencies": {
     "@eslint/js": "^9.*",
+    "@stylistic/eslint-plugin": "^2.*",
     "eslint": "^9.*",
-    "eslint-plugin-vue": "9.*",
+    "eslint-plugin-vue": "^9.*",
     "typescript": "*",
-    "typescript-eslint": "8.*",
-    "vue-eslint-parser": "9.*"
+    "typescript-eslint": "^8.*",
+    "vue-eslint-parser": "^9.*"
   },
   "peerDependenciesMeta": {
     "typescript": {
@@ -71,6 +72,9 @@
       "optional": true
     },
     "vue-eslint-parser": {
+      "optional": true
+    },
+    "@stylistic/eslint-plugin": {
       "optional": true
     }
   },
