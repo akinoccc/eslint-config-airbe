@@ -1,3 +1,10 @@
+# [1.0.0-beta.6](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-07-28)
+
+
+### Features
+
+* **rules:** [stylistic] change rule of `no-trailing-spaces` ([4d30e28](https://github.com/akinoccc/eslint-config-airbe/commit/4d30e281de8904a3345ddd2a5d637edfd65fb28a))
+
 # [1.0.0-beta.5](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-07-27)
 
 
