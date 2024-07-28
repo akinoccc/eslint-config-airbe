@@ -1,5 +1,5 @@
 import eslint from '@eslint/js'
-import stylisticEslint, { StylisticCustomizeOptions } from '@stylistic/eslint-plugin'
+import stylisticEslint from '@stylistic/eslint-plugin'
 import pluginVue from 'eslint-plugin-vue'
 import tseslint from 'typescript-eslint'
 import vueParser from 'vue-eslint-parser'
@@ -15,7 +15,7 @@ interface AirBeConfig {
   js?: CustomConfigItem
   ts?: CustomConfigItem
   vue?: CustomConfigItem
-  stylistic?: StylisticCustomizeOptions
+  stylistic?: CustomConfigItem
   ignores?: string[]
   globals?: ESLint.Globals
 }
