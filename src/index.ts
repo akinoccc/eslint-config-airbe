@@ -1,15 +1,10 @@
-import eslint from '@eslint/js'
-import stylisticEslint from '@stylistic/eslint-plugin'
-import pluginVue from 'eslint-plugin-vue'
-import tseslint from 'typescript-eslint'
-import vueParser from 'vue-eslint-parser'
-
-import type { TSESLint } from '@typescript-eslint/utils'
-import { ESLint, Linter } from 'eslint'
+import { ESLint } from 'eslint'
 import { isPlainObject } from './utils'
-
-type EslintFlagConfig = (Linter.FlatConfig | TSESLint.FlatConfig.Config | Linter.BaseConfig)
-type CustomConfigItem = Linter.RulesRecord | boolean
+import type { CustomConfigItem, EslintFlagConfig } from "./types";
+import getJsConfig from "./configs/js";
+import getTsConfig from "./configs/ts";
+import getVueConfig from "./configs/vue";
+import getStylisticConfig from "./configs/stylistic";
 
 interface AirBeConfig {
   js?: CustomConfigItem
@@ -21,128 +16,14 @@ interface AirBeConfig {
 }
 
 const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfig[]): EslintFlagConfig[] => {
-  const eslintConfig: EslintFlagConfig[] = [],
-    { js, ts, vue, stylistic, ignores, globals } = config
+  const  { js, ts, vue, stylistic, ignores, globals } = config
 
-  if (js) {
-    const jsRules: Linter.RulesRecord = {
-      'no-def': 'off',
-
-      eqeqeq: ['error', 'always'],
-      curly: ['error', 'multi', 'consistent'],
-
-      'default-case': 'warn',
-      'default-case-last': 'warn',
-      'no-await-in-loop': 'warn',
-      'no-console': 'warn',
-
-      'no-use-before-define': 'error',
-      'no-eval': 'error',
-    }
-    if (isPlainObject(js))
-      Object.assign(jsRules, js)
-
-    eslintConfig.push(eslint.configs.recommended, { rules: jsRules })
-  }
-
-  if (ts) {
-    const tsRules: Linter.RulesRecord = {
-      '@typescript-eslint/prefer-nullish-coalescing': 'off',
-      '@typescript-eslint/no-unsafe-member-access': 'off',
-      '@typescript-eslint/no-unsafe-call': 'off',
-      '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-unsafe-argument': 'off',
-
-      '@typescript-eslint/no-unsafe-return': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
-      '@typescript-eslint/dot-notation': 'warn',
-    }
-
-    if (isPlainObject(ts))
-      Object.assign(tsRules, ts)
-
-    eslintConfig.push(...tseslint.configs.recommendedTypeChecked, ...tseslint.configs.stylisticTypeChecked, { rules: tsRules })
-  }
-
-  if (vue) {
-    const vueRules: Linter.RulesRecord = {
-      'vue/multi-word-component-names': 'off',
-      'vue/no-duplicate-attributes': ['warn', {
-        allowCoexistClass: true,
-        allowCoexistStyle: true,
-      }],
-      'vue/no-parsing-error': ['error', {
-        'duplicate-attribute': false,
-      }],
-      'vue/html-indent': ['error', 2],
-      'vue/max-attributes-per-line': ['error', {
-        singleline: {
-          max: 1,
-        },
-        multiline: {
-          max: 1,
-        },
-      }],
-      'vue/first-attribute-linebreak': ['error', {
-        singleline: 'beside',
-        multiline: 'below',
-      }],
-      'vue/component-name-in-template-casing': ['error', 'PascalCase', { registeredComponentsOnly: false }],
-      'vue/attribute-hyphenation': 'error',
-      'vue/no-multiple-objects-in-class': 'error',
-      'vue/no-useless-mustaches': 'error',
-      'vue/no-useless-v-bind': 'error',
-      'vue/padding-line-between-blocks': 'error',
-      'vue/prefer-true-attribute-shorthand': 'error',
-      'vue/prefer-separate-static-class': 'error',
-      'vue/valid-v-slot': ['error', {
-        allowModifiers: true,
-      }],
-    }
-
-    if (isPlainObject(vue))
-      Object.assign(vueRules, vue)
-
-    eslintConfig.push(
-      ...pluginVue.configs['flat/recommended'],
-      {
-        languageOptions: {
-          parser: vueParser,
-          parserOptions: {
-            parser: tseslint.parser,
-            projectService: true,
-            EXPERIMENTAL_useProjectService: true,
-            ecmaFeatures: {
-              jsx: true,
-            },
-          },
-        },
-      },
-      {
-        rules: vueRules,
-      },
-    )
-  }
-
-  if (stylistic) {
-    const stylisticRules: Linter.RulesRecord = {
-      '@stylistic/no-trailing-spaces': ['error', { skipBlankLines: true }],
-    }
-
-    if (isPlainObject(stylistic))
-      Object.assign(stylisticRules, stylistic)
-
-    eslintConfig.push(
-      stylisticEslint.configs.customize({
-        quoteProps: 'as-needed',
-      }),
-      {
-        rules: stylisticRules,
-      },
-    )
-  }
+  const eslintConfig: EslintFlagConfig[] = [
+      ...getJsConfig(js),
+      ...getTsConfig(ts),
+      ...getVueConfig(vue),
+      ...getStylisticConfig(stylistic),
+  ]
 
   if (Array.isArray(ignores))
     eslintConfig.push({
