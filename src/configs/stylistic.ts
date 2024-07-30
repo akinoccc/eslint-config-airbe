@@ -1,9 +1,9 @@
-import type { CustomConfigItem } from "../types";
-import {Linter} from "eslint";
-import {isPlainObject} from "../utils";
-import stylisticEslint from "@stylistic/eslint-plugin";
+import type { CustomConfigItem } from '../types'
+import { Linter } from 'eslint'
+import { isPlainObject } from '../utils'
+import stylisticEslint from '@stylistic/eslint-plugin'
 
-export default function getStylisticConfig(stylisticConfig?: CustomConfigItem) {
+export function getStylisticConfig(stylisticConfig?: CustomConfigItem) {
   if (stylisticConfig) {
     const stylisticRules: Linter.RulesRecord = {
       '@stylistic/no-trailing-spaces': ['error', { skipBlankLines: true }],

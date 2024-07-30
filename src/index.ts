@@ -1,28 +1,27 @@
 import { ESLint } from 'eslint'
+import type { CustomConfigItem, EslintFlagConfig } from './types'
 import { isPlainObject } from './utils'
-import type { CustomConfigItem, EslintFlagConfig } from "./types";
-import getJsConfig from "./configs/js";
-import getTsConfig from "./configs/ts";
-import getVueConfig from "./configs/vue";
-import getStylisticConfig from "./configs/stylistic";
+import { getImportConfig, getJsConfig, getStylisticConfig, getTsConfig, getVueConfig } from './configs'
 
 interface AirBeConfig {
   js?: CustomConfigItem
   ts?: CustomConfigItem
   vue?: CustomConfigItem
   stylistic?: CustomConfigItem
+  importx?: CustomConfigItem
   ignores?: string[]
   globals?: ESLint.Globals
 }
 
 const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfig[]): EslintFlagConfig[] => {
-  const  { js, ts, vue, stylistic, ignores, globals } = config
+  const { js, ts, vue, stylistic, importx, ignores, globals } = config
 
   const eslintConfig: EslintFlagConfig[] = [
-      ...getJsConfig(js),
-      ...getTsConfig(ts),
-      ...getVueConfig(vue),
-      ...getStylisticConfig(stylistic),
+    ...getJsConfig(js),
+    ...getTsConfig(ts),
+    ...getVueConfig(vue),
+    ...getStylisticConfig(stylistic),
+    ...getImportConfig(importx),
   ]
 
   if (Array.isArray(ignores))

@@ -1,11 +1,11 @@
-import {Linter} from "eslint";
-import {isPlainObject} from "../utils";
-import pluginVue from "eslint-plugin-vue";
-import vueParser from "vue-eslint-parser";
-import tseslint from "typescript-eslint";
-import type { CustomConfigItem } from "../types";
+import { Linter } from 'eslint'
+import { isPlainObject } from '../utils'
+import pluginVue from 'eslint-plugin-vue'
+import vueParser from 'vue-eslint-parser'
+import tseslint from 'typescript-eslint'
+import type { CustomConfigItem } from '../types'
 
-export default function getVueConfig(vueConfig?: CustomConfigItem) {
+export function getVueConfig(vueConfig?: CustomConfigItem) {
   if (vueConfig) {
     const vueRules: Linter.RulesRecord = {
       'vue/multi-word-component-names': 'off',

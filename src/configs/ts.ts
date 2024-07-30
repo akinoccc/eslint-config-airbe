@@ -1,9 +1,9 @@
-import type { Linter } from "eslint";
-import type { CustomConfigItem } from "../types";
-import { isPlainObject } from "../utils";
-import tseslint from "typescript-eslint";
+import type { Linter } from 'eslint'
+import type { CustomConfigItem } from '../types'
+import { isPlainObject } from '../utils'
+import tseslint from 'typescript-eslint'
 
-export default function getTsConfig(tsConfig?: CustomConfigItem) {
+export function getTsConfig(tsConfig?: CustomConfigItem) {
   if (tsConfig) {
     const tsRules: Linter.RulesRecord = {
       '@typescript-eslint/prefer-nullish-coalescing': 'off',

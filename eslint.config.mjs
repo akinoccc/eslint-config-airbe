@@ -5,6 +5,7 @@ export default defineConfig({
   ts: true,
   vue: true,
   stylistic: true,
+  importx: true,
   ignores: ['dist/*', 'node_modules/*'],
   globals: {
     ref: true,
