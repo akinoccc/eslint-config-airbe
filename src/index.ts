@@ -13,6 +13,13 @@ interface AirBeConfig {
   globals?: ESLint.Globals
 }
 
+/**
+ * 定义ESLint配置。
+ *
+ * @param {AirBeConfig} config - 包含自定义配置项的对象。
+ * @param {...EslintFlagConfig} customFlatConfigs - 额外的自定义配置数组。
+ * @returns {EslintFlagConfig[]} 返回ESLint配置数组。
+ */
 const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfig[]): EslintFlagConfig[] => {
   const { js, ts, vue, stylistic, importx, ignores, globals } = config
 
