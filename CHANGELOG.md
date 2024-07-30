@@ -1,3 +1,21 @@
+# [1.0.0-beta.7](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2024-07-30)
+
+
+### Bug Fixes
+
+* **configs:** return typedef ([285fabe](https://github.com/akinoccc/eslint-config-airbe/commit/285fabe722a9672517d2faee778810b25bd9ef25))
+* incorrect typedef for options ([07b6197](https://github.com/akinoccc/eslint-config-airbe/commit/07b61978bfc7c56c0ed76c28a95a2017078d48b9))
+
+
+### Features
+
+* support the config of `import x` ([33159ce](https://github.com/akinoccc/eslint-config-airbe/commit/33159cef29c445249f9a3168b950fb0c95eca1af))
+
+
+### Performance Improvements
+
+* split config ([feb06cf](https://github.com/akinoccc/eslint-config-airbe/commit/feb06cf4e7b3175f478c316dbb708f9ae5b76819))
+
 # [1.0.0-beta.6](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-07-28)
 
 
