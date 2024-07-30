@@ -1,9 +1,9 @@
 import type { Linter } from 'eslint'
-import type { CustomConfigItem } from '../types'
+import type { CustomConfigItem, EslintFlagConfig } from '../types'
 import { isPlainObject } from '../utils'
 import tseslint from 'typescript-eslint'
 
-export function getTsConfig(tsConfig?: CustomConfigItem) {
+export function getTsConfig(tsConfig?: CustomConfigItem): EslintFlagConfig[] {
   if (tsConfig) {
     const tsRules: Linter.RulesRecord = {
       '@typescript-eslint/prefer-nullish-coalescing': 'off',

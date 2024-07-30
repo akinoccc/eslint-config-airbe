@@ -1,9 +1,9 @@
 import { Linter } from 'eslint'
 import eslintImportX from 'eslint-plugin-import-x'
-import { CustomConfigItem } from '../types'
+import { CustomConfigItem, type EslintFlagConfig } from '../types'
 import { isPlainObject } from '../utils'
 
-export function getImportConfig(importConfig?: CustomConfigItem) {
+export function getImportConfig(importConfig?: CustomConfigItem): EslintFlagConfig[] {
   if (importConfig) {
     const importRules: Linter.RulesRecord = {
       'import-x/no-absolute-path': 'error',

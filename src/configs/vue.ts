@@ -3,9 +3,9 @@ import { isPlainObject } from '../utils'
 import pluginVue from 'eslint-plugin-vue'
 import vueParser from 'vue-eslint-parser'
 import tseslint from 'typescript-eslint'
-import type { CustomConfigItem } from '../types'
+import type { CustomConfigItem, EslintFlagConfig } from '../types'
 
-export function getVueConfig(vueConfig?: CustomConfigItem) {
+export function getVueConfig(vueConfig?: CustomConfigItem): EslintFlagConfig[] {
   if (vueConfig) {
     const vueRules: Linter.RulesRecord = {
       'vue/multi-word-component-names': 'off',

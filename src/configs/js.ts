@@ -1,9 +1,9 @@
 import type { Linter } from 'eslint'
 import { isPlainObject } from '../utils'
 import eslint from '@eslint/js'
-import type { CustomConfigItem } from '../types'
+import type { CustomConfigItem, EslintFlagConfig } from '../types'
 
-export function getJsConfig(jsConfig?: CustomConfigItem) {
+export function getJsConfig(jsConfig?: CustomConfigItem): EslintFlagConfig[] {
   if (jsConfig) {
     const jsRules: Linter.RulesRecord = {
       'no-def': 'off',
