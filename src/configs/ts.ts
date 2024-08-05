@@ -22,7 +22,15 @@ export function getTsConfig(tsConfig?: CustomConfigItem): EslintFlagConfig[] {
     if (isPlainObject(tsConfig))
       Object.assign(tsRules, tsConfig)
 
-    return [...tseslint.configs.recommendedTypeChecked, ...tseslint.configs.stylisticTypeChecked, { rules: tsRules }]
+    return [...tseslint.configs.recommendedTypeChecked, ...tseslint.configs.stylisticTypeChecked, {
+      languageOptions: {
+        parserOptions: {
+          parser: tseslint.parser,
+          projectService: true,
+        },
+      },
+      rules: tsRules,
+    }]
   }
   return []
 }

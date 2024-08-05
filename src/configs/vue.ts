@@ -53,7 +53,6 @@ export function getVueConfig(vueConfig?: CustomConfigItem): EslintFlagConfig[] {
           parserOptions: {
             parser: tseslint.parser,
             projectService: true,
-            EXPERIMENTAL_useProjectService: true,
             ecmaFeatures: {
               jsx: true,
             },
