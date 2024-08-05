@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-airbe",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A shared eslint config to apply eslint fastly",
   "keywords": [
     "eslint",

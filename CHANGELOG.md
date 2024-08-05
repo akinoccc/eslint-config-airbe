@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.1...v1.0.2) (2024-08-05)
+
+
+### Bug Fixes
+
+* **configs:** [ts] no parser when closing `vue` ([ca3ebe2](https://github.com/akinoccc/eslint-config-airbe/commit/ca3ebe26146c73bd9b78062631b2aa785393b9a9))
+
 # 1.0.0 (2024-08-02)
 
 
