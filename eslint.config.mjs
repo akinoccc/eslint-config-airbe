@@ -5,8 +5,9 @@ export default defineConfig({
   ts: true,
   vue: true,
   stylistic: true,
-  importx: true,
-  ignores: ['dist/*', 'node_modules/*'],
+  importX: true,
+  unusedImports: true,
+  ignores: ['dist/*', 'node_modules/*', '.eslint-config-inspector'],
   globals: {
     ref: true,
   },

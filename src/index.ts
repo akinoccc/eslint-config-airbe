@@ -1,8 +1,8 @@
-import { ESLint } from 'eslint'
 import type { CustomConfigItem, EslintFlagConfig } from './types'
 import { isPlainObject } from './utils'
 import { getImportConfig, getJsConfig, getStylisticConfig, getTsConfig, getVueConfig } from './configs'
 import { getUnusedImportsConfig } from './configs/unusedImports'
+import { Linter } from 'eslint'
 
 interface AirBeConfig {
   js?: CustomConfigItem
@@ -12,7 +12,7 @@ interface AirBeConfig {
   importX?: CustomConfigItem
   unusedImports?: CustomConfigItem
   ignores?: string[]
-  globals?: ESLint.Globals
+  globals?: Linter.Globals
 }
 
 /**
