@@ -24,7 +24,8 @@ export default defineConfig({
   ts: true,
   vue: true,
   stylistic: true,
-  importx: true,
+  importX: true,
+  unusedImports: true,
   ignores: ["node_modules"],
   globals: {
     bar: true,

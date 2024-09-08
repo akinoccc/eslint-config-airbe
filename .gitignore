@@ -3,3 +3,5 @@ dist
 lib
 
 .idea
+
+.eslint-config-inspector

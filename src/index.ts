@@ -2,13 +2,15 @@ import { ESLint } from 'eslint'
 import type { CustomConfigItem, EslintFlagConfig } from './types'
 import { isPlainObject } from './utils'
 import { getImportConfig, getJsConfig, getStylisticConfig, getTsConfig, getVueConfig } from './configs'
+import { getUnusedImportsConfig } from './configs/unusedImports'
 
 interface AirBeConfig {
   js?: CustomConfigItem
   ts?: CustomConfigItem
   vue?: CustomConfigItem
   stylistic?: CustomConfigItem
-  importx?: CustomConfigItem
+  importX?: CustomConfigItem
+  unusedImports?: CustomConfigItem
   ignores?: string[]
   globals?: ESLint.Globals
 }
@@ -21,14 +23,24 @@ interface AirBeConfig {
  * @returns {EslintFlagConfig[]} 返回ESLint配置数组。
  */
 const defineConfig = (config: AirBeConfig, ...customFlatConfigs: EslintFlagConfig[]): EslintFlagConfig[] => {
-  const { js, ts, vue, stylistic, importx, ignores, globals } = config
+  const {
+    js,
+    ts,
+    vue,
+    stylistic,
+    importX,
+    unusedImports,
+    ignores,
+    globals,
+  } = config
 
   const eslintConfig: EslintFlagConfig[] = [
     ...getJsConfig(js),
     ...getTsConfig(ts),
     ...getVueConfig(vue),
     ...getStylisticConfig(stylistic),
-    ...getImportConfig(importx),
+    ...getImportConfig(importX),
+    ...getUnusedImportsConfig(unusedImports),
   ]
 
   if (Array.isArray(ignores))
