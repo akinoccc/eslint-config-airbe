@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.2...v1.1.0) (2024-09-08)
+
+
+### Features
+
+* **configs:** support `eslint-plugin-unused-imports` ([9a11cc3](https://github.com/akinoccc/eslint-config-airbe/commit/9a11cc3189a5f8afb5b3d7364bce5ed6b2c29517))
+
 ## [1.0.2](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.1...v1.0.2) (2024-08-05)
 
 
