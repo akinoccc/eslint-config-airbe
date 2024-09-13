@@ -9,6 +9,7 @@
 ## Install
 
 ```bash
+# The lib build in the deps, so you just need to install the one.
 npm install eslint-config-airbe --save-dev
 ```
 
