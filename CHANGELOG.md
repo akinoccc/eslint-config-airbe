@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/akinoccc/eslint-config-airbe/compare/v1.1.0...v1.2.0) (2024-10-11)
+
+
+### Features
+
+* **js:** add default rule `prefer-template` ([e7d5660](https://github.com/akinoccc/eslint-config-airbe/commit/e7d5660d19851c88136c78642620b77226714b77))
+
 # [1.1.0](https://github.com/akinoccc/eslint-config-airbe/compare/v1.0.2...v1.1.0) (2024-09-08)
 
 
