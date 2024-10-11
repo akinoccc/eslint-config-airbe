@@ -1,11 +1,12 @@
-import type { Linter } from 'eslint'
-import { isPlainObject } from '../utils'
 import eslint from '@eslint/js'
+import type { Linter } from 'eslint'
 import type { CustomConfigItem, EslintFlagConfig } from '../types'
+import { isPlainObject } from '../utils'
 
 export function getJsConfig(jsConfig?: CustomConfigItem): EslintFlagConfig[] {
   if (jsConfig) {
     const jsRules: Linter.RulesRecord = {
+      "prefer-template": "warn",
       'no-def': 'off',
 
       eqeqeq: ['error', 'always'],
