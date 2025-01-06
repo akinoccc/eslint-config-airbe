@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint'
+import tseslint from 'typescript-eslint'
 import type { CustomConfigItem, EslintFlagConfig } from '../types'
 import { isPlainObject } from '../utils'
-import tseslint from 'typescript-eslint'
 
 export function getTsConfig(tsConfig?: CustomConfigItem): EslintFlagConfig[] {
   if (tsConfig) {
@@ -22,7 +22,7 @@ export function getTsConfig(tsConfig?: CustomConfigItem): EslintFlagConfig[] {
     if (isPlainObject(tsConfig))
       Object.assign(tsRules, tsConfig)
 
-    return [...tseslint.configs.recommendedTypeChecked, ...tseslint.configs.stylisticTypeChecked, {
+    return [...(tseslint.configs.recommendedTypeChecked as EslintFlagConfig[]), ...(tseslint.configs.stylisticTypeChecked as EslintFlagConfig[]), {
       languageOptions: {
         parserOptions: {
           parser: tseslint.parser,
