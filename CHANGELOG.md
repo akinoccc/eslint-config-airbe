@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/akinoccc/eslint-config-airbe/compare/v1.2.0...v1.2.1) (2025-01-06)
+
+
+### Bug Fixes
+
+* **deps:** outdate deps of `typescript-eslint` ([c34a371](https://github.com/akinoccc/eslint-config-airbe/commit/c34a371c2e710a611ed32c8363bbdb5f22fd6a39))
+
 # [1.2.0](https://github.com/akinoccc/eslint-config-airbe/compare/v1.1.0...v1.2.0) (2024-10-11)
 
 

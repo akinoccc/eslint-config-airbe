@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-airbe",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A shared eslint config to apply eslint fastly",
   "keywords": [
     "eslint",
@@ -79,7 +79,10 @@
   "pnpm": {
     "overrides": {
       "micromatch@<4.0.8": ">=4.0.8",
-      "rollup@>=4.0.0 <4.22.4": ">=4.22.4"
+      "rollup@>=4.0.0 <4.22.4": ">=4.22.4",
+      "cross-spawn@>=7.0.0 <7.0.5": ">=7.0.5",
+      "@eslint/plugin-kit@<0.2.3": ">=0.2.3",
+      "nanoid@<3.3.8": ">=3.3.8"
     }
   }
 }
